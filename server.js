@@ -28,6 +28,7 @@ const typeDefs = `
         saveItem(item: ItemInput): Item
         deleteItem(id: Int): Boolean
         generateDomains: [Domain]
+        generateDomain(name: String): [Domain]
     }
 
 `
@@ -93,6 +94,11 @@ const resolvers = {
                 }
             }
             return domains
+        },
+        async generateDomain(_, args) {
+            const name = args.name
+            console.log(name)
+            return []
         }
     }
 }
