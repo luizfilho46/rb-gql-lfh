@@ -89,7 +89,6 @@ const resolvers = {
                     const available = await isDomainAvailable(`${url}.com.br`)
                     domains.push({
                         name,
-                        extension,
                         checkout,
                         available
                     });
@@ -108,6 +107,7 @@ const resolvers = {
                 const available = await isDomainAvailable(`${url}${extension}`)
                 domains.push({
                     name,
+                    extension,
                     checkout,
                     available
                 });
