@@ -97,8 +97,21 @@ const resolvers = {
         },
         async generateDomain(_, args) {
             const name = args.name
-            console.log(name)
-            return []
+            const domains = []
+            const extensions = [".com.br", ".com", ".net", ".org"]
+
+            for (const extension of extensions) {
+                const url = name.toLowerCase()
+                const checkout = `https://checkout.hostgator.com.br/?a=add&sld=${url}&tld=${extension}`
+                const available = await isDomainAvailable(`${url}${extension}`)
+                domains.push({
+                    name,
+                    checkout,
+                    available
+                });
+            }
+
+            return domains
         }
     }
 }
